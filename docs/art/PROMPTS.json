@@ -22,7 +22,11 @@
         "시선 회피"
       ],
       "master_prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Korean maintenance engineer, tired eyes and dark circles, messy short black hair, clean shaven, loose slate work coveralls, navy undershirt, practical shoulder tool strap with screwdriver and wrench. Preserve approved master. Centered waist-up bust, full head and shoulders, transparent alpha background, square canvas, no text.",
-      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering."
+      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering.",
+      "completed_files": [
+        "assets/portraits/char_c1_park_neutral.png",
+        "assets/portraits/char_c1_park_shaken.png"
+      ]
     },
     {
       "id": "char_c1_choi",
@@ -38,7 +42,11 @@
         "안도"
       ],
       "master_prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Korean senior researcher, woman in her thirties as art proposal, neat tied-up hair, thin practical glasses, white laboratory coat over muted slate clothes, pale anxious face; no blood stains because they are not established in the game. Centered waist-up bust, full head and shoulders, transparent alpha background, square canvas, no text.",
-      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering."
+      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering.",
+      "completed_files": [
+        "assets/portraits/char_c1_choi_neutral.png",
+        "assets/portraits/char_c1_choi_shaken.png"
+      ]
     },
     {
       "id": "char_c1_han",
@@ -55,7 +63,11 @@
         "분노/붕괴"
       ],
       "master_prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Korean deputy director in his early fifties, precisely combed black hair grey at temples, neat short beard, thin rectangular steel glasses, charcoal waistcoat, pale shirt, narrow tie, brass pocket-watch chain. Preserve approved master. Centered waist-up bust, full head and shoulders, transparent alpha background, square canvas, no text.",
-      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering."
+      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering.",
+      "completed_files": [
+        "assets/portraits/char_c1_han_neutral.png",
+        "assets/portraits/char_c1_han_shaken.png"
+      ]
     },
     {
       "id": "char_c2_kim",
@@ -71,7 +83,11 @@
         "안도"
       ],
       "master_prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Korean culture researcher, man in his thirties as art proposal, round face, short wavy black hair, muted sage-grey laboratory uniform, small capped sample holder at chest, calm attentive eyes. Centered waist-up bust, full head and shoulders, transparent alpha background, square canvas, no text.",
-      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering."
+      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering.",
+      "completed_files": [
+        "assets/portraits/char_c2_kim_neutral.png",
+        "assets/portraits/char_c2_kim_shaken.png"
+      ]
     },
     {
       "id": "char_c2_lee",
@@ -87,7 +103,11 @@
         "안도"
       ],
       "master_prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Korean senior researcher, woman in her forties as art proposal, low tied-back hair, broad forehead, thin silver glasses, blue-grey lab coat, tense worried face distinctly different from Choi Yuri. Centered waist-up bust, full head and shoulders, transparent alpha background, square canvas, no text.",
-      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering."
+      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering.",
+      "completed_files": [
+        "assets/portraits/char_c2_lee_neutral.png",
+        "assets/portraits/char_c2_lee_shaken.png"
+      ]
     },
     {
       "id": "char_c2_kang",
@@ -104,7 +124,11 @@
         "붕괴"
       ],
       "master_prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Korean senior researcher, man in his forties as art proposal, angular face, short neatly cut hair, high-buttoned dark laboratory coat, rubber gloves tucked at wrist, controlled defensive expression. Not a facilities manager. Centered waist-up bust, full head and shoulders, transparent alpha background, square canvas, no text.",
-      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering."
+      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering.",
+      "completed_files": [
+        "assets/portraits/char_c2_kang_neutral.png",
+        "assets/portraits/char_c2_kang_shaken.png"
+      ]
     },
     {
       "id": "char_c3_oh",
@@ -121,7 +145,11 @@
         "좌절"
       ],
       "master_prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Korean security chief, man in his forties as art proposal, broad shoulders, strong square jaw, short clipped hair, practical tactical security vest and radio, confident forceful expression. No invented injury or villain insignia. Centered waist-up bust, full head and shoulders, transparent alpha background, square canvas, no text.",
-      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering."
+      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering.",
+      "completed_files": [
+        "assets/portraits/char_c3_oh_neutral.png",
+        "assets/portraits/char_c3_oh_shaken.png"
+      ]
     },
     {
       "id": "char_c3_jung",
@@ -137,7 +165,11 @@
         "죄책감/좌절"
       ],
       "master_prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Korean data analyst, androgynous adult in their thirties as art proposal, neat chin-length dark hair, slim charcoal zip jacket over pale shirt, compact data tablet held low, anxious observant eyes. No wheelchair, cast, patient gown or medical device. Centered waist-up bust, full head and shoulders, transparent alpha background, square canvas, no text.",
-      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering."
+      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering.",
+      "completed_files": [
+        "assets/portraits/char_c3_jung_neutral.png",
+        "assets/portraits/char_c3_jung_shaken.png"
+      ]
     },
     {
       "id": "char_c4_song",
@@ -153,7 +185,11 @@
         "안도"
       ],
       "master_prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Korean IT chief, man in his forties as art proposal, long lean face, untidy swept-back hair, worn knit vest over shirt, small cable tester clipped at waist, startled troubled expression. Not an external auditor. Centered waist-up bust, full head and shoulders, transparent alpha background, square canvas, no text.",
-      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering."
+      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering.",
+      "completed_files": [
+        "assets/portraits/char_c4_song_neutral.png",
+        "assets/portraits/char_c4_song_shaken.png"
+      ]
     },
     {
       "id": "char_c4_yoon",
@@ -169,7 +205,11 @@
         "단호"
       ],
       "master_prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Korean deputy security officer, woman in her thirties as art proposal, short tied-back hair, restrained navy security uniform, wrist communication device, calm decisive eyes. Not a biochemist. Centered waist-up bust, full head and shoulders, transparent alpha background, square canvas, no text.",
-      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering."
+      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering.",
+      "completed_files": [
+        "assets/portraits/char_c4_yoon_neutral.png",
+        "assets/portraits/char_c4_yoon_shaken.png"
+      ]
     },
     {
       "id": "char_c4_baek",
@@ -186,7 +226,11 @@
         "최종 붕괴"
       ],
       "master_prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Korean executive director, man in his sixties as art proposal, slicked-back silver hair, broad smooth face, elegant long charcoal coat with a small brass collar clasp, relaxed knowing smile, distinct from Han Doyoon. No wheelchair, patient gown, defibrillator attachment or physical injury. Centered waist-up bust, full head and shoulders, transparent alpha background, square canvas, no text.",
-      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering."
+      "expression_edit_template": "Use this exact character master as edit target. Keep identity, facial structure, hair, clothes, accessories, pose, framing, palette and lighting unchanged. Change ONLY facial expression to {expression}. Transparent background, no new props, no lettering.",
+      "completed_files": [
+        "assets/portraits/char_c4_baek_neutral.png",
+        "assets/portraits/char_c4_baek_shaken.png"
+      ]
     }
   ],
   "maps": [
@@ -727,5 +771,16 @@
       "id": "vfx_logic_shatter",
       "implementation_prompt": "Short code-driven statement fracture on successful proof, not physical card destruction; reduced-motion alternative."
     }
-  ]
+  ],
+  "production_status": {
+    "updated_at_utc": "2026-10-24T15:42:00Z",
+    "completed_portraits": 22,
+    "completed_actors": 11,
+    "completed_variants": [
+      "neutral",
+      "shaken"
+    ],
+    "game_integration": "not_performed",
+    "remaining": "Third/fourth expressions, protagonist, backgrounds, map decoration, evidence icons, UI/VFX, BGM and SFX remain unproduced."
+  }
 }

@@ -1,14 +1,14 @@
-# Production batches
+# Portrait production milestone
 
-All images generated with OpenAI's built-in image tool, using the approved Case 1 style reference. Character appearances are proposed art designs; names and roles follow cases.js. Each shaken portrait is an edit of its own neutral master.
+Generated with OpenAI’s built-in image tool on 2026-10-24. Approved art direction: hardboiled tech-noir, textured ink/cel shading, restrained cyan rim light. Each neutral master establishes the actor; shaken variants edit the matching master.
 
-## Case 2 — complete portraits
-- kim / 김태호: char_c2_kim_neutral.png, char_c2_kim_shaken.png
-- lee / 이서연: char_c2_lee_neutral.png, char_c2_lee_shaken.png
-- kang / 강현우: char_c2_kang_neutral.png, char_c2_kang_shaken.png
+| Case | Actors / file stems | Files |
+| --- | --- | --- |
+| 1 | char_c1_park, char_c1_choi, char_c1_han | 6 |
+| 2 | char_c2_kim, char_c2_lee, char_c2_kang | 6 |
+| 3 | char_c3_oh, char_c3_jung | 4 |
+| 4 | char_c4_song, char_c4_yoon, char_c4_baek | 6 |
 
-## Case 3 — complete portraits
-- oh / 오민석: char_c3_oh_neutral.png, char_c3_oh_shaken.png
-- jung / 정하늘: char_c3_jung_neutral.png, char_c3_jung_shaken.png
+All 22 originals are in assets/portraits, with _neutral.png and _shaken.png suffixes. Appearance choices are proposed art, not changes to canonical roles. Choi’s final clean coat removes a noncanonical evidence cue. Original files retain transparency. Git blob hashes are verified against local files.
 
-Images live in assets/portraits. These originals are not yet wired to assets/manifest.js. Upload Git blob hashes were verified; no gameplay changes or mobile visual integration is claimed.
+The game manifest and all gameplay/story/build files are unchanged. No merge or deployment was performed. Expressions are not yet switched in-game. 512px derivatives, mobile compositing and performance checks remain. Third/fourth expressions, protagonist, backgrounds, maps, items, UI/VFX and all sound/music remain unproduced.
