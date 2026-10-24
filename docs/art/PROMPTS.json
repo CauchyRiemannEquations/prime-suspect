@@ -773,7 +773,7 @@
     }
   ],
   "production_status": {
-    "updated_at_utc": "2026-10-24T15:42:00Z",
+    "updated_at_utc": "2026-10-24T15:50:00Z",
     "completed_portraits": 22,
     "completed_actors": 11,
     "completed_variants": [
@@ -781,6 +781,31 @@
       "shaken"
     ],
     "game_integration": "not_performed",
-    "remaining": "Third/fourth expressions, protagonist, backgrounds, map decoration, evidence icons, UI/VFX, BGM and SFX remain unproduced."
+    "remaining": "Third/fourth expressions, protagonist, remaining backgrounds/items/UI/VFX/BGM/SFX, game integration and mobile QA.",
+    "completed_backgrounds": [
+      {
+        "id": "bg_c1_office",
+        "width": 1672,
+        "height": 941,
+        "layout": "horizontal, approximately 16:9; not full-screen 9:16"
+      }
+    ],
+    "completed_items": [
+      "item_manual_book",
+      "item_vent_grate"
+    ],
+    "completed_maps": [
+      "map_case1_blueprint",
+      "map_case2_blueprint",
+      "map_case3_blueprint",
+      "map_case4_blueprint"
+    ],
+    "map_warning": "Special routes are visible in production SVGs. Reveal-gating must be implemented before in-game use.",
+    "completed_sfx_prototypes": [
+      "sfx_card_swipe",
+      "sfx_factor_split_ok",
+      "sfx_logic_break"
+    ],
+    "sfx_warning": "Original procedural synthesis; numeric WAV validation only, not auditioned."
   }
 }

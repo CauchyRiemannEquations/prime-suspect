@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="720" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+<title id="title">Case 3 평면도</title>
+<desc id="desc">실제 게임 방 번호와 연결을 반영한 정적 청사진. 특수 연결은 단서 공개 이후 표시해야 합니다. 선 교차는 방 연결이 아닙니다.</desc>
+<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#547082" stroke-width="0.5" opacity="0.18"/></pattern><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="none" stroke="#FF9F1C" stroke-width="1.4"/></marker></defs>
+<style>text{font-family:"Noto Sans CJK KR","Noto Sans KR","Malgun Gothic",sans-serif} .label{font-size:20px;fill:#DDEFF2;font-weight:600;text-anchor:middle}.prime{font-size:27px;fill:#00F5D4;font-weight:700;text-anchor:middle;dominant-baseline:central}.edge{fill:none;stroke:#00B9B2;stroke-width:2.5;opacity:.8}.special{fill:none;stroke:#FF9F1C;stroke-width:3;stroke-dasharray:9 7}.node{fill:#0B132B;fill-opacity:.94;stroke:#00F5D4;stroke-width:2}</style>
+<rect x="16" y="16" width="928" height="688" rx="8" fill="url(#grid)" stroke="#547082" stroke-width="1" opacity=".7"/>
+<text x="38" y="45" font-size="16" fill="#88B8C4" letter-spacing="2">CASE 3 / BLUEPRINT</text>
+<g id="normal-edges">
+<path id="edge-2-3" data-from="2" data-to="3" class="edge" d="M480,86.4 L230.4,273.6"/>
+<path id="edge-2-5" data-from="2" data-to="5" class="edge" d="M480,86.4 L729.6,273.6"/>
+<path id="edge-3-7" data-from="3" data-to="7" class="edge" d="M230.4,273.6 L480,439.2"/>
+<path id="edge-5-7" data-from="5" data-to="7" class="edge" d="M729.6,273.6 L480,439.2"/>
+<path id="edge-3-13" data-from="3" data-to="13" class="edge" d="M230.4,273.6 L230.4,619.2"/>
+<path id="edge-5-11" data-from="5" data-to="11" class="edge" d="M729.6,273.6 L729.6,619.2"/>
+</g>
+<g id="room-nodes">
+<g id="room-2" data-node="2" data-name="메인 로비" transform="translate(480,86.4)">
+<title>메인 로비 (2)</title>
+<circle r="34" class="node"/>
+<text class="prime" y="0">2</text>
+<rect x="-118" y="40" width="236" height="29" rx="4" fill="#0B132B" fill-opacity=".94"/><text class="label" y="62">메인 로비</text>
+</g>
+<g id="room-3" data-node="3" data-name="서쪽 보안 복도" transform="translate(230.4,273.6)">
+<title>서쪽 보안 복도 (3)</title>
+<circle r="34" class="node"/>
+<text class="prime" y="0">3</text>
+<rect x="-118" y="40" width="236" height="29" rx="4" fill="#0B132B" fill-opacity=".94"/><text class="label" y="62">서쪽 보안 복도</text>
+</g>
+<g id="room-5" data-node="5" data-name="동쪽 데이터 복도" transform="translate(729.6,273.6)">
+<title>동쪽 데이터 복도 (5)</title>
+<circle r="34" class="node"/>
+<text class="prime" y="0">5</text>
+<rect x="-118" y="40" width="236" height="29" rx="4" fill="#0B132B" fill-opacity=".94"/><text class="label" y="62">동쪽 데이터 복도</text>
+</g>
+<g id="room-7" data-node="7" data-name="중앙 휴게 라운지" transform="translate(480,439.2)">
+<title>중앙 휴게 라운지 (7)</title>
+<circle r="34" class="node"/>
+<text class="prime" y="0">7</text>
+<rect x="-118" y="40" width="236" height="29" rx="4" fill="#0B132B" fill-opacity=".94"/><text class="label" y="62">중앙 휴게 라운지</text>
+</g>
+<g id="room-13" data-node="13" data-name="보안 금고실" transform="translate(230.4,619.2)">
+<title>보안 금고실 (13)</title>
+<circle r="34" class="node"/>
+<text class="prime" y="0">13</text>
+<rect x="-118" y="40" width="236" height="29" rx="4" fill="#0B132B" fill-opacity=".94"/><text class="label" y="62">보안 금고실</text>
+</g>
+<g id="room-11" data-node="11" data-name="메인 서버실" transform="translate(729.6,619.2)">
+<title>메인 서버실 (11)</title>
+<circle r="34" class="node"/>
+<text class="prime" y="0">11</text>
+<rect x="-118" y="40" width="236" height="29" rx="4" fill="#0B132B" fill-opacity=".94"/><text class="label" y="62">메인 서버실</text>
+</g>
+</g>
+<text x="38" y="67" font-size="11" fill="#88B8C4">실선: 일반 연결  /  점선: 특수 연결  ·  선 교차는 연결 지점이 아님</text>
+</svg>

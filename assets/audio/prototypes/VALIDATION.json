@@ -1,0 +1,63 @@
+{
+  "generator": "original deterministic NumPy synthesis",
+  "seed": 20261024,
+  "auditioned": false,
+  "files": {
+    "sfx_card_swipe.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "bits": 16,
+      "frames": 23040,
+      "duration_seconds": 0.48,
+      "peak_dbfs": -8.000117030469568,
+      "rms_dbfs": -25.472377533947594,
+      "dc_mean": -6.357828776041667e-08,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0,
+      "sha256": "d8b8470a26c28d77b079a985039969ad1ec9949b70f64e3fca9476754c7ec537"
+    },
+    "sfx_factor_split_ok.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "bits": 16,
+      "frames": 31680,
+      "duration_seconds": 0.66,
+      "peak_dbfs": -7.0005506829029605,
+      "rms_dbfs": -23.266071871265062,
+      "dc_mean": 8.380774295691288e-08,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0,
+      "sha256": "1e7f76abf2719182b96a5e8d1e0e58b9dc8b370091a16216c911ddb92a8e882b"
+    },
+    "sfx_logic_break.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "bits": 16,
+      "frames": 64800,
+      "duration_seconds": 1.35,
+      "peak_dbfs": -7.0005506829029605,
+      "rms_dbfs": -25.4745245695061,
+      "dc_mean": 6.593303915895062e-09,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0,
+      "sha256": "451ab22a34b067e206ce0017decf55d3aed5f4e3fca4a357e7a134dac01c6714"
+    },
+    "PREVIEW_sequence.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "bits": 16,
+      "frames": 335520,
+      "duration_seconds": 6.99,
+      "peak_dbfs": -7.0005506829029605,
+      "rms_dbfs": -29.25403262526082,
+      "dc_mean": 4.8206713180287316e-09,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0,
+      "sha256": "a7269bf3b2fca4fc87485ce4dfb406624f74afa00e650088feeaffc9a7359a69"
+    }
+  }
+}

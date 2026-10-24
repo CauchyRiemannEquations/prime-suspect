@@ -1,0 +1,37 @@
+{
+  "source": "cases.js blob 8e8fa8b1ec1656cf589cb521c8b94ba827f0fd1e",
+  "checks": [
+    {
+      "case": 1,
+      "nodes": 5,
+      "normal_edges": 4,
+      "special_edges": 1,
+      "sha256": "e0e9748f5874cee31ebf5df866df91b6a52d07132e5d4e25ef640f1b895ea38e",
+      "passed": true
+    },
+    {
+      "case": 2,
+      "nodes": 5,
+      "normal_edges": 4,
+      "special_edges": 0,
+      "sha256": "d8497d9d0d9b95a2382513884a7bcd6666e9b5ccc38c907a7fb2f444aefd2a34",
+      "passed": true
+    },
+    {
+      "case": 3,
+      "nodes": 6,
+      "normal_edges": 6,
+      "special_edges": 0,
+      "sha256": "3546791bda1548422445769fc48acf70bd4f3c5e5030bbb7f7d940e63619e1c2",
+      "passed": true
+    },
+    {
+      "case": 4,
+      "nodes": 5,
+      "normal_edges": 4,
+      "special_edges": 1,
+      "sha256": "caae294da77b276c2ab2d1565d9d6fa39778e74dea5d85d8a134ad70f6a9a591",
+      "passed": true
+    }
+  ]
+}
