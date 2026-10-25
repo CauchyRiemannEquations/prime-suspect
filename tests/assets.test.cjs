@@ -1,0 +1,24 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const root=path.resolve(__dirname,'..');let count=0;
+function test(name,fn){fn();console.log('PASS '+name);count++;}
+const node=()=>({innerHTML:'',dataset:{},classList:{add(){},remove(){}},querySelector(){return null},querySelectorAll(){return []},addEventListener(){},focus(){},showModal(){this.open=true},close(){this.open=false}});
+const nodes={app:node(),dialog:node(),toast:node()};
+const document={getElementById:id=>nodes[id]||null,activeElement:null,body:node(),addEventListener(){},querySelector(){return null},querySelectorAll(){return []},hidden:false};
+const ctx={document,console,localStorage:{getItem(){return null},setItem(){}},setTimeout(){},clearTimeout(){},scrollTo(){},addEventListener(){}};ctx.window=ctx;vm.createContext(ctx);
+for(const f of ['assets/manifest.js','core.js','cases.js'])vm.runInContext(fs.readFileSync(path.join(root,f),'utf8'),ctx);
+ctx.PSMedia={create:()=>({sync(){},effect(){},unlock(){}})};
+let game=fs.readFileSync(path.join(root,'game.js'),'utf8');
+game=game.replace('  render();\n})();',`  window.testGame={assets,state,ui,blankCase,expression,portrait,roomArt,mapPanel,evidenceArt,evidenceItems,decoder,evidencePanel,advance,render,closeDialog,scan,applyOffset};\n})();`);
+vm.runInContext(game,ctx);const t=ctx.testGame;
+test('every manifest source exists locally',()=>{function visit(x){if(typeof x==='string')assert.ok(fs.existsSync(path.join(root,x)),x);else Object.values(x).forEach(visit);}visit(ctx.PS_ASSETS);});
+test('every CSS asset URL exists',()=>{for(const m of fs.readFileSync(path.join(root,'styles.css'),'utf8').matchAll(/url\(['"]?(assets\/[^)'"\s]+)['"]?\)/g))assert.ok(fs.existsSync(path.join(root,m[1])),m[1]);});
+test('all eleven suspects use actual neutral artwork at first encounter',()=>{for(let i=0;i<4;i++){t.state.current=i;for(const p of ctx.PS_CASES[i].suspects){assert.equal(t.expression(p),'neutral');assert.match(t.portrait(p),new RegExp(`char_c${i+1}_${p.id}_neutral.png`));}}});
+test('title and all four scene backgrounds are selected by state',()=>{t.state.started=false;assert.match(t.roomArt(),/bg_title.png/);t.state.started=true;for(let i=0;i<4;i++){t.state.current=i;assert.ok(t.roomArt().includes(ctx.PS_ASSETS.backgrounds[i+1]));}});
+test('hidden routes and labels only render after collecting physical clue',()=>{for(const i of [0,3]){t.state.current=i;const g=t.state.cases[i],c=ctx.PS_CASES[i];g.clues=[];assert.doesNotMatch(t.mapPanel(),/class="special-line"|class="special-button"/);assert.match(t.mapPanel(),/data-action="room"/);g.clues.push(c.special.clue);assert.match(t.mapPanel(),/class="special-line"/);assert.match(t.mapPanel(),/class="special-button"/);g.clues=[];}});
+test('inventory does not show uncollected clue art or evidence',()=>{t.state.current=0;assert.equal(t.evidenceItems().length,0);assert.doesNotMatch(t.evidencePanel(),/item_manual_book/);t.state.cases[0].clues=['manual'];assert.match(t.evidencePanel(),/item_manual_book/);assert.doesNotMatch(t.evidencePanel(),/item_vent_grate/);});
+test('numeric artwork overlays are exact and anonymous',()=>{assert.match(t.evidenceArt('backup'),/150 · 1,470 · 7,098/);assert.doesNotMatch(t.evidenceArt('backup'),/강현우|김태호|이서연/);assert.match(t.evidenceArt('burntCard'),/1,009/);assert.match(t.evidenceArt('aed'),/0%/);});
+test('scan does not signal guilt through portrait, verified proof changes expression',()=>{t.state.current=0;const g=t.state.cases[0];g.openingDone=true;t.scan();assert.equal(t.expression(ctx.PS_CASES[0].suspects[0]),'neutral');t.advance();assert.equal(t.ui.resolution.person,'park');assert.equal(t.ui.resolution.expression,'averted');t.closeDialog();assert.equal(t.expression(ctx.PS_CASES[0].suspects[0]),'averted');});
+test('snapshot matching does not give culprit a breakdown or shaken expression',()=>{t.state.current=1;t.advance();assert.equal(t.ui.resolution.expression,'neutral');t.closeDialog();assert.equal(t.expression(ctx.PS_CASES[1].suspects.find(p=>p.id==='kang')),'neutral');});
+test('final proof captures the challenged culprit and only then uses breakdown',()=>{t.state.current=0;const g=t.state.cases[0];g.step=2;g.suspect=g.speaker='han';t.advance();assert.equal(t.ui.resolution.person,'han');assert.equal(t.ui.resolution.expression,'breakdown');assert.equal(g.solved,true);t.closeDialog();assert.equal(t.expression(ctx.PS_CASES[0].suspects[2]),'breakdown');});
+test('fallback never loops by retaining failed source',()=>{t.state.current=0;assert.doesNotMatch(t.portrait(ctx.PS_CASES[0].suspects[0],true),/<img/);assert.match(t.portrait(ctx.PS_CASES[0].suspects[0],true),/VISUAL SIGNAL LOST/);});
+console.log(count+' asset integration checks passed.');

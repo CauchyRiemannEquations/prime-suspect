@@ -76,3 +76,44 @@ body.focus-mode{padding:0;overflow:hidden;background:#080d12;color:#e7e9e2;font-
 @media(prefers-reduced-motion:reduce){.focus-mode *,.focus-mode *:before,.focus-mode *:after{animation:none!important;transition:none!important}}
 
 @media(max-width:760px){.dialogue-controls:has(.deduction-label) .dialogue-left{display:none}.dialogue-controls:has(.deduction-label) .dialogue-right{margin-left:auto}}
+
+/* Production art: keep all game labels and numeric evidence as selectable HTML. */
+.scene-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1}
+.scene-background~:not(.room-vignette){display:none}
+.scene-background[hidden]~:not(.room-vignette){display:block}
+.room-art .room-vignette{z-index:2;background:linear-gradient(0deg,#080f17e8,transparent 68%),linear-gradient(90deg,#080f1760,transparent 70%)}
+.title-screen .scene-background{object-position:center 42%;filter:brightness(.7)}
+.scene-figure .portrait-asset{height:100%;width:100%;max-width:none;opacity:1}
+.person-choice .portrait-asset{height:100%;width:100%;object-fit:contain;object-position:center bottom}
+.scene-location,.scene-caption{text-shadow:0 2px 6px #000;color:#c3d1d4}
+.evidence-art{display:inline-flex;position:relative;align-items:center;justify-content:center;width:78px;height:78px;vertical-align:middle}
+.evidence-art img{width:100%;height:100%;object-fit:contain}
+.evidence-art.large{display:flex;width:min(240px,70vw);height:200px;margin:12px auto}
+.evidence-art .asset-data{position:absolute;bottom:5%;left:50%;transform:translateX(-50%);white-space:nowrap;font:10px var(--mono);padding:4px 6px;background:#0b132bef;border:1px solid #637f8c;color:#f0f6ef;border-radius:3px}
+.evidence-art.large .asset-data{font-size:15px}
+.focus-card-slot>.evidence-art{width:160px;height:105px}
+.focus-card-slot>.evidence-art .asset-data{font-size:12px;bottom:0}
+.evidence-icon:has(.evidence-art){height:78px;margin-bottom:8px}
+.notebook-entry>.evidence-art{float:right;margin:0 0 8px 12px}
+.scene-map .room-number{background:none;border:0;box-shadow:none;width:48px;height:48px}
+.scene-map .room-number img{display:block;width:100%;height:100%}
+.scene-map .map{background-color:#0b132b;background-image:linear-gradient(#54708219 1px,transparent 1px),linear-gradient(90deg,#54708219 1px,transparent 1px);background-size:24px 24px;border:1px solid #54708266;border-radius:6px}
+.resolution-portrait{float:right;width:150px;height:165px;margin:12px 0 12px 18px}
+.resolution-portrait .portrait-stage{height:100%;background:transparent}
+.resolution-portrait img{width:100%;height:100%;object-fit:contain}
+.resolution-portrait .person-name,.resolution-portrait .portrait-id,.resolution-portrait .emotion,.resolution-portrait .crosshair,.resolution-portrait .placeholder-label{display:none}
+.resolution-dialog .dialog-actions{clear:both}
+/* Code-owned values sit in the generated chip's blank value slot. */
+.focused-decoder .factor-chip{background:transparent url('assets/ui-kit/assets/ui_block_even.svg') center/100% 100% no-repeat;border:0;border-radius:0;min-width:110px;min-height:80px;padding:27px 15px 7px}
+.focused-decoder .factor-chip.odd{background-image:url('assets/ui-kit/assets/ui_block_odd.svg')}
+.focused-decoder .factor-chip.unknown{background-image:url('assets/ui-kit/assets/ui_block_prime_state.svg')}
+.focused-decoder .factor-chip small{display:none}
+#proof-button{background:#451e2b url('assets/ui-kit/assets/ui_btn_contradict_idle.svg') center/100% 100% no-repeat;color:#fff;border:0;min-height:56px;padding:15px 22px;text-shadow:0 1px 3px #000}
+#proof-button:disabled{background-image:url('assets/ui-kit/assets/ui_btn_contradict_disabled.svg')}
+#proof-button:focus-visible{outline:3px solid #00f5d4;outline-offset:3px}
+.scan-flash{position:relative}.scan-flash:after{content:'';position:absolute;inset:0;background:url('assets/ui-kit/assets/vfx_prime_slash.svg') center/contain no-repeat;pointer-events:none;animation:art-slash .45s ease-out forwards}@keyframes art-slash{from{opacity:.8}to{opacity:0}}
+#proof-button{min-width:190px}.proof-label{display:flex;align-items:center;justify-content:center;position:relative;width:85%;min-height:28px;background:#0b132b;color:inherit;white-space:nowrap}
+@media(max-width:600px){.resolution-portrait{width:100px;height:120px;margin-left:10px}.evidence-art{width:65px;height:65px}.evidence-icon:has(.evidence-art){height:65px}.focused-decoder .factor-chip{min-width:92px;min-height:72px;padding-top:27px}.scene-figure .portrait-asset{mask-image:linear-gradient(180deg,black 85%,transparent)}#proof-button{padding:12px 16px;min-height:52px}.scene-map .room-number{width:43px;height:43px}}
+@media(prefers-reduced-motion:reduce){.scan-flash:after{display:none}.scene-figure{transition:none}}
+
+.scene-map .room-number{position:relative}.map-value{position:absolute;inset:23%;display:flex;align-items:center;justify-content:center;background:#0b132b;color:#e7eff7;font:20px var(--mono)}

@@ -62,29 +62,39 @@
   function add(list, item) { if (!list.includes(item)) list.push(item); }
   function flag(item) { add(game().flags,item); }
   function save() { try { localStorage.setItem(SAVE_KEY,JSON.stringify(state)); storageOK=true; } catch (_) { storageOK=false; } }
-  let toastTimer, flash = '', audioContext;
+  let toastTimer, flash = '';
   function toast(message) {
     const node=document.getElementById('toast'); node.textContent=message; node.classList.add('visible');
     clearTimeout(toastTimer); toastTimer=setTimeout(()=>node.classList.remove('visible'),3000);
   }
-  function sound(kind) {
-    if (!state.sound) return;
-    if (assets.audio[kind]) { const a=new Audio(assets.audio[kind]); a.volume=.3; a.play().catch(()=>{}); return; }
-    try {
-      audioContext ||= new (window.AudioContext||window.webkitAudioContext)();
-      if (audioContext.state==='suspended') audioContext.resume();
-      const t=audioContext.currentTime, oscillator=audioContext.createOscillator(), gain=audioContext.createGain();
-      oscillator.type=kind==='error'?'triangle':'sine'; oscillator.frequency.setValueAtTime(kind==='success'?660:kind==='scan'?420:155,t);
-      oscillator.frequency.exponentialRampToValueAtTime(kind==='success'?990:kind==='scan'?880:100,t+.16);
-      gain.gain.setValueAtTime(.035,t); gain.gain.exponentialRampToValueAtTime(.001,t+.25);
-      oscillator.connect(gain); gain.connect(audioContext.destination); oscillator.start(t); oscillator.stop(t+.26);
-    } catch (_) { /* 무음 환경에서도 게임은 계속된다. */ }
+  const media = window.PSMedia.create(assets);
+  function sound(kind) { media.effect(kind); }
+  function syncMedia() {
+    const track = ui.resolution || game().solved ? 'revealed' :
+      !state.started || !game().openingDone || ['map','decoder','evidence'].includes(ui.panel) ? 'investigation' :
+      game().step > 0 ? 'pursuit' : 'interrogation';
+    media.sync(state.sound, track);
   }
-  function portrait(p,forceFallback=false) {
+  function expression(p) {
+    const g=game(), completed=g.log.map(Number).map(i=>data().steps[i]).filter(Boolean);
+    if(ui.resolution?.person===p.id)return ui.resolution.expression;
+    if(g.solved)return ({han:'breakdown',kang:'breakdown',oh:'defeated',jung:'guilty',baek:'breakdown',park:'averted',yoon:'resolute'})[p.id] || 'relieved';
+    if(completed.some(s=>s.type!=='matching'&&s.suspect===p.id))return p.id==='park'?'averted':p.id==='song'?'relieved':'shaken';
+    return 'neutral';
+  }
+  function portraitPath(p, forced) {
+    return assets.expressions[p.id]?.[forced || expression(p)] || assets.portraits[p.id];
+  }
+  function evidenceArt(id, large=false) {
+    const path=assets.items[id]; if(!path)return '';
+    const label=id==='backup'?'150 · 1,470 · 7,098':id==='aed'?'0%':id==='burntCard'?'1,009':'';
+    return `<span class="evidence-art ${large?'large':''}"><img src="${esc(path)}" alt="" loading="lazy" decoding="async">${label?`<span class="asset-data">${label}</span>`:''}</span>`;
+  }
+  function portrait(p,forceFallback=false,forcedExpression) {
     const n=data().suspects.indexOf(p), unique=`portrait-${p.id}`;
     const svg=`<svg class="person" viewBox="0 0 220 210" aria-hidden="true"><defs><linearGradient id="${unique}" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#677e82"/><stop offset=".6" stop-color="#2a3d47"/><stop offset="1" stop-color="#14232d"/></linearGradient></defs><path d="M22 216q3-55 54-65l13-22h42l13 22q49 8 54 65" fill="url(#${unique})"/><path d="m88 144 22 29 23-29-2-18H90z" fill="#354a54"/><path d="M71 70q0-48 39-48t39 48l-6 40q-8 28-33 29t-33-29z" fill="url(#${unique})"/><path d="M70 77q-7-32 9-50 27-29 57-3 22 12 13 53l-9-21q-27 1-44-13-11 17-26 15z" fill="#14232d"/><path d="m87 148 23 25-16 19-15-40m54-4-23 25 16 19 15-40" fill="#1c303a"/><path d="m108 174-4 36h13l-5-36" fill="#5d726b"/>${n===1?'<path d="M77 78h26v15H78zm40 0h26v15h-26zm-14 5h14" stroke="#8c9da1" fill="none"/>':''}</svg>`;
-    const hasAsset=assets.portraits[p.id]&&!forceFallback;
-    return `<div class="portrait-stage"><div class="crosshair"></div><span class="portrait-id">SUBJECT 0${n+1} / INTERROGATION</span>${hasAsset?`<img class="portrait-asset" src="${esc(assets.portraits[p.id])}" alt="${p.name}의 초상" data-fallback="${p.id}">`:svg}<span class="placeholder-label">${hasAsset?'':'VISUAL SIGNAL LOST'}</span><div class="person-name"><strong>${p.name}</strong><small>${p.role}</small></div><span class="emotion"><i class="status-dot"></i>${p.tone}</span></div>`;
+    const source=portraitPath(p,forcedExpression),hasAsset=source&&!forceFallback;
+    return `<div class="portrait-stage"><div class="crosshair"></div><span class="portrait-id">SUBJECT 0${n+1} / INTERROGATION</span>${hasAsset?`<img class="portrait-asset" src="${esc(source)}" alt="${p.name}의 초상" decoding="async" data-fallback="${p.id}">`:svg}<span class="placeholder-label">${hasAsset?'':'VISUAL SIGNAL LOST'}</span><div class="person-name"><strong>${p.name}</strong><small>${p.role}</small></div><span class="emotion"><i class="status-dot"></i>${p.tone}</span></div>`;
   }
   function evidenceItems() {
     const c=data(),g=game();
@@ -137,7 +147,8 @@
     return `<header class="scene-header" ${ui.panel?'inert':''}><button class="scene-brand" data-action="home" aria-label="프라임 서스펙트 홈"><span class="brand-symbol">p</span><span>PRIME SUSPECT</span></button>${state.started?`<button class="chapter-button" data-action="panel" data-value="cases"><span class="mono">CASE 0${c.id}</span><span>${c.title}</span><span class="chapter-dots">•••</span></button>`:'<span class="depth-label">ARCHIMEDES LAB / −1,000m</span>'}<div class="scene-header-actions"><button class="icon-button" data-action="sound" aria-label="${state.sound?'사운드 끄기':'사운드 켜기'}" aria-pressed="${state.sound}">${icon(state.sound?'sound':'mute')}</button><button class="icon-button" data-action="settings" aria-label="설정">${icon('settings')}</button></div></header>`;
   }
   function roomArt() {
-    return `<div class="room-art" aria-hidden="true"><div class="ceiling-light"></div><div class="light-cone"></div><div class="wall-panel left-wall"></div><div class="wall-panel right-wall"></div><div class="scene-door"><span>${data().id===4?'07':'13'}</span><i></i></div><div class="wall-vent"></div><div class="room-console"><i></i><i></i><i></i></div><div class="floor-grid"></div><div class="room-vignette"></div></div>`;
+    const background=state.started?assets.backgrounds[data().id]:assets.backgrounds.title;
+    return `<div class="room-art" aria-hidden="true">${background?`<img class="scene-background" src="${esc(background)}" alt="" decoding="async" fetchpriority="high">`:""}<div class="ceiling-light"></div><div class="light-cone"></div><div class="wall-panel left-wall"></div><div class="wall-panel right-wall"></div><div class="scene-door"><span>${data().id===4?'07':'13'}</span><i></i></div><div class="wall-vent"></div><div class="room-console"><i></i><i></i><i></i></div><div class="floor-grid"></div><div class="room-vignette"></div></div>`;
   }
   function landing() {
     const progress=state.cases.some(c=>c.scanned.length||c.step);
@@ -166,7 +177,7 @@
   function mapPanel() {
     const c=data(),g=game(),roomBy=p=>c.rooms.find(r=>r.p===p);
     const line=(a,b,special=false)=>{const r=roomBy(a),q=roomBy(b);return `<path class="${special?'special-line':''}" d="M${r.x} ${r.y} ${special?'Q'+(r.x+20)+' '+((r.y+q.y)/2):'L'} ${q.x} ${q.y}"/>`;};
-    return `<section class="scene-map" aria-label="현장 지도"><p class="tool-lead">조사할 방을 선택하세요.</p><div class="map case-${c.id}"><svg class="connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${c.edges.map(e=>line(...e)).join('')}${c.special?line(c.special.from,c.special.to,true):''}</svg>${c.rooms.map(r=>`<button class="room ${r.crime?'crime':''} ${g.clues.includes(r.clue)?'discovered':''}" style="left:${r.x}%;top:${r.y}%" data-action="room" data-value="${r.p}" aria-label="게이트 ${r.p}, ${r.name}${r.crime?', 범행 현장':''}"><span class="room-number">${r.p}</span><span class="room-name">${r.name}</span>${r.crime?'<span class="crime-caption">범행 현장</span>':''}</button>`).join('')}${c.special?`<button class="special-button" data-action="clue" data-value="${c.special.clue}">${c.special.label}</button>`:''}</div><p class="map-instruction"><i class="legend-square crime"></i> 범행 현장 <i class="legend-square clue"></i> 조사 완료</p></section>`;
+    return `<section class="scene-map" aria-label="현장 지도"><p class="tool-lead">조사할 방을 선택하세요.</p><div class="map case-${c.id}"><svg class="connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${c.edges.map(e=>line(...e)).join('')}${c.special&&g.clues.includes(c.special.clue)?line(c.special.from,c.special.to,true):''}</svg>${c.rooms.map(r=>`<button class="room ${r.crime?'crime':''} ${g.clues.includes(r.clue)?'discovered':''}" style="left:${r.x}%;top:${r.y}%" data-action="room" data-value="${r.p}" aria-label="게이트 ${r.p}, ${r.name}${r.crime?', 범행 현장':''}"><span class="room-number"><img src="assets/ui-kit/assets/ui_map_node_prime_${r.p}_${g.clues.includes(r.clue)?'active':r.crime?'attention':'default'}.svg" alt="" width="48" height="48"><span class="map-value">${r.p}</span></span><span class="room-name">${r.name}</span>${r.crime?'<span class="crime-caption">범행 현장</span>':''}</button>`).join('')}${c.special&&g.clues.includes(c.special.clue)?`<button class="special-button" data-action="clue" data-value="${c.special.clue}">${c.special.label}</button>`:''}</div><p class="map-instruction"><i class="legend-square crime"></i> 범행 현장 <i class="legend-square clue"></i> 조사 완료</p></section>`;
   }
   function cardPicker() {
     const c=data(),g=game();
@@ -190,12 +201,12 @@
     if(c.id===4)modules.push(['offset','±1 보정']);
     if(!modules.some(m=>m[0]===g.module))g.module='factor';
     const individual=['factor','offset'].includes(g.module);
-    return `<section class="focused-decoder" aria-label="팩터 디코더"><div class="decoder-tabs" role="tablist" aria-label="디코더 모듈">${modules.map(([id,label])=>`<button class="decoder-tab ${id===g.module?'active':''}" data-action="module" data-value="${id}" role="tab" aria-selected="${id===g.module}">${label}</button>`).join('')}</div>${individual?`${cardPicker()}<div class="focus-card-slot"><span class="eyebrow">${p.name}의 마그네틱 키카드</span><strong>${fmt(p.card)}</strong>${!g.scanned.includes(p.id)?'<button class="primary" data-action="scan" id="scan-button">카드를 스캔한다 →</button>':'<span class="scan-complete">✓ 분석 완료</span>'}</div>`:''}<div class="focused-tool">${{factor:factors,timeline:timeline,gcd:gcdPanel,swap:swapPanel,offset:offsetPanel}[g.module]()}</div>${evidenceItems().length&&step().type!=='matching'?'<button class="evidence-shortcut" data-action="panel" data-value="evidence">분석한 기록을 증거로 제시하기 →</button>':''}</section>`;
+    return `<section class="focused-decoder" aria-label="팩터 디코더"><div class="decoder-tabs" role="tablist" aria-label="디코더 모듈">${modules.map(([id,label])=>`<button class="decoder-tab ${id===g.module?'active':''}" data-action="module" data-value="${id}" role="tab" aria-selected="${id===g.module}">${label}</button>`).join('')}</div>${individual?`${cardPicker()}<div class="focus-card-slot">${evidenceArt(c.id===4&&p.id==='baek'?'burntCard':'card')}<span class="eyebrow">${p.name}의 마그네틱 키카드</span><strong>${fmt(p.card)}</strong>${!g.scanned.includes(p.id)?'<button class="primary" data-action="scan" id="scan-button">카드를 스캔한다 →</button>':'<span class="scan-complete">✓ 분석 완료</span>'}</div>`:''}<div class="focused-tool">${{factor:factors,timeline:timeline,gcd:gcdPanel,swap:swapPanel,offset:offsetPanel}[g.module]()}</div>${evidenceItems().length&&step().type!=='matching'?'<button class="evidence-shortcut" data-action="panel" data-value="evidence">분석한 기록을 증거로 제시하기 →</button>':''}</section>`;
   }
   function evidencePanel() {
     const c=data(),g=game(),s=step(),items=evidenceItems(),held=heldText();
     if(s.type==='matching'&&!g.solved)return '<div class="tool-empty"><span class="large-tool-symbol">◷</span><h3>먼저 익명 기록의 주인을 찾자.</h3><button class="primary" data-action="start-matching">스냅샷 분석하기 →</button></div>';
-    return `<section class="focused-evidence" aria-label="증거 제시">${held?`<blockquote class="held-quote"><small>반박할 ${s.options?'추리':'증언'}</small><p>“${held}”</p></blockquote>`:'<p class="tool-lead">증언을 듣고 「잠깐」으로 멈춰 세우세요.</p>'}${items.length?`<div class="evidence-grid">${items.map(e=>`<div class="evidence-tile ${g.evidence.includes(e.id)?'selected':''}"><button class="evidence-pick" data-action="evidence" data-value="${e.id}" aria-pressed="${g.evidence.includes(e.id)}"><span class="evidence-icon">${icon(e.source==='현장'?'clue':'scan')}</span><strong>${e.title}</strong><small>${e.short}</small><i>${g.evidence.includes(e.id)?'✓':'＋'}</i></button><button class="evidence-detail" data-action="evidence-info" data-value="${e.id}" aria-label="${e.title} 상세">상세</button></div>`).join('')}</div>`:'<div class="evidence-empty"><span class="large-tool-symbol">?</span><h3>아직 연결할 증거가 없다.</h3><p>카드를 분석하거나 현장을 조사해 보자.</p><div><button class="secondary" data-action="panel" data-value="map">현장 조사</button><button class="primary" data-action="panel" data-value="decoder">카드 분석</button></div></div>'}${g.feedback?`<p class="proof-feedback" role="alert">${g.feedback}</p>`:''}<div class="evidence-submit"><span>${g.solved?'해결한 사건':`증거 <b>${g.evidence.length}</b> / ${s.evidence.length}`}</span>${g.solved?'<button class="secondary" data-action="notebook">해결 기록 보기</button>':held?`<button class="primary" data-action="present" id="proof-button" ${g.evidence.length!==s.evidence.length?'disabled':''}>이 증거를 제시한다 ${icon('arrow')}</button>`:'<button class="primary" data-action="panel-close">증언을 들으러 간다 →</button>'}</div></section>`;
+    return `<section class="focused-evidence" aria-label="증거 제시">${held?`<blockquote class="held-quote"><small>반박할 ${s.options?'추리':'증언'}</small><p>“${held}”</p></blockquote>`:'<p class="tool-lead">증언을 듣고 「잠깐」으로 멈춰 세우세요.</p>'}${items.length?`<div class="evidence-grid">${items.map(e=>`<div class="evidence-tile ${g.evidence.includes(e.id)?'selected':''}"><button class="evidence-pick" data-action="evidence" data-value="${e.id}" aria-pressed="${g.evidence.includes(e.id)}"><span class="evidence-icon">${evidenceArt(e.id)||icon(e.source==='현장'?'clue':'scan')}</span><strong>${e.title}</strong><small>${e.short}</small><i>${g.evidence.includes(e.id)?'✓':'＋'}</i></button><button class="evidence-detail" data-action="evidence-info" data-value="${e.id}" aria-label="${e.title} 상세">상세</button></div>`).join('')}</div>`:'<div class="evidence-empty"><span class="large-tool-symbol">?</span><h3>아직 연결할 증거가 없다.</h3><p>카드를 분석하거나 현장을 조사해 보자.</p><div><button class="secondary" data-action="panel" data-value="map">현장 조사</button><button class="primary" data-action="panel" data-value="decoder">카드 분석</button></div></div>'}${g.feedback?`<p class="proof-feedback" role="alert">${g.feedback}</p>`:''}<div class="evidence-submit"><span>${g.solved?'해결한 사건':`증거 <b>${g.evidence.length}</b> / ${s.evidence.length}`}</span>${g.solved?'<button class="secondary" data-action="notebook">해결 기록 보기</button>':held?`<button class="primary" data-action="present" id="proof-button" ${g.evidence.length!==s.evidence.length?'disabled':''} aria-label="모순 제시!"> <span class="proof-label">모순 제시!</span></button>`:'<button class="primary" data-action="panel-close">증언을 들으러 간다 →</button>'}</div></section>`;
   }
   function peoplePanel() {
     return `<div class="people-grid">${data().suspects.map(p=>`<button class="person-choice ${speaker().id===p.id?'active':''}" data-action="speaker" data-value="${p.id}">${portrait(p)}<strong>${p.name}</strong><small>${p.role}</small><span>증언을 듣는다 →</span></button>`).join('')}</div>`;
@@ -216,7 +227,7 @@
     const key=active?.matches('[data-action]')?{action:active.dataset.action,value:active.dataset.value}:null;
     document.body.classList.add('focus-mode');
     app.innerHTML=state.started?`<div class="focus-game">${header()}${scene()}${workbench()}</div>`:landing();
-    if(assets.backgrounds.lab){const art=app.querySelector('.room-art');if(art)art.style.backgroundImage=`linear-gradient(#0b111780,#0b1117d9),url("${assets.backgrounds.lab.replace(/["\\\n\r]/g,'')}")`;}
+    syncMedia();
     flash='';
     const target=focusId?document.getElementById(focusId):null;
     if(target&&!target.closest('[inert]'))target.focus({preventScroll:true});
@@ -234,8 +245,10 @@
   function resolution() {
     const r=ui.resolution;if(!r)return;
     const last=r.index===r.pages.length-1;
-    showDialog(`<div class="resolution-label">${r.finished?'사건 해결':'모순 발견'}<span>${r.index+1} / ${r.pages.length}</span></div>${r.index===0?`<div class="resolution-symbol">${r.finished?'∎':'≠'}</div><h2>${r.title}</h2>`:'<h2>흔적이 이어진다.</h2>'}<p class="resolution-text">${r.pages[r.index]}</p><div class="dialog-actions">${!last?'<button class="primary" data-action="resolution-next">계속 →</button>':r.finished&&data().id<4?'<button class="secondary" data-action="close">기록에 남긴다</button><button class="primary" data-action="next-case">다음 사건 →</button>':`<button class="primary" data-action="close">${r.finished?'수사를 마친다':'심문을 계속한다'} →</button>`}</div>`,null,true);
+    const subject=data().suspects.find(p=>p.id===r.person);
+    showDialog(`${subject?`<div class="resolution-portrait">${portrait(subject,false,r.expression)}</div>`:""}<div class="resolution-label">${r.finished?'사건 해결':'모순 발견'}<span>${r.index+1} / ${r.pages.length}</span></div>${r.index===0?`<div class="resolution-symbol">${r.finished?'∎':'≠'}</div><h2>${r.title}</h2>`:'<h2>흔적이 이어진다.</h2>'}<p class="resolution-text">${r.pages[r.index]}</p><div class="dialog-actions">${!last?'<button class="primary" data-action="resolution-next">계속 →</button>':r.finished&&data().id<4?'<button class="secondary" data-action="close">기록에 남긴다</button><button class="primary" data-action="next-case">다음 사건 →</button>':`<button class="primary" data-action="close">${r.finished?'수사를 마친다':'심문을 계속한다'} →</button>`}</div>`,null,true);
     dialog.classList.add('resolution-dialog');
+    syncMedia();
   }
 
   let dialogCallback = null;
@@ -246,7 +259,7 @@
     const title=dialog.querySelector('h2');if(title)title.id='dialog-title';
     dialog.dataset.mandatory=mandatory?'true':'false'; dialogCallback=callback; dialog.showModal();
   }
-  function closeDialog() { dialog.close(); ui.resolution=null; const callback=dialogCallback; dialogCallback=null; if(callback)callback(); }
+  function closeDialog() { dialog.close(); ui.resolution=null; const callback=dialogCallback; dialogCallback=null; if(callback)callback(); render(); }
   function modalTop(label) { return `<div class="dialog-top"><span class="eyebrow">${label}</span><button class="icon-button" data-action="close" aria-label="닫기">${icon('close')}</button></div>`; }
   function help() {
     showDialog(`${modalTop('수사 가이드')}<h2>듣고, 의심하고, 제시한다.</h2><div class="help-rule"><span>01</span><p><b>다음 증언 → 잠깐.</b>한 문장씩 듣다가, 의심되는 말에서 멈춰 세우세요.</p></div><div class="help-rule"><span>02</span><p><b>필요한 도구만 열어 조사합니다.</b>현장 지도와 팩터 디코더는 아래에 있습니다. 닫으면 멈췄던 증언으로 돌아옵니다.</p></div><div class="help-rule"><span>03</span><p><b>증거를 고르고 제시합니다.</b>증언과 모순되는 기록과 현장 단서를 연결하세요. 틀려도 다시 시도할 수 있습니다.</p></div><p style="font-size:11px">문을 통과할 때마다 게이트의 소수가 곱해집니다. 왕복은 짝수 지수, 방문 순서는 추가 증거로 판단합니다.</p><div class="dialog-actions"><button class="primary" data-action="close">수사를 시작하자 ${icon('arrow')}</button></div>`);
@@ -255,12 +268,12 @@
     const r=data().rooms.find(r=>r.p===Number(value)); if(!r)return;
     const clue=data().clues.find(c=>c.id===r.clue);
     if(clue){add(game().clues,clue.id);save();render();}
-    showDialog(`${modalTop(clue?'단서 발견':'현장 조사')}<h2><span class="mono lime-text">${r.p}</span> ${r.name}</h2>${clue?`<p>${clue.text}</p><div class="found-clue">${icon('check')} ${clue.title} <span>수사 노트에 기록됨</span></div>`:`<p>${r.desc}</p>`}<div class="dialog-actions"><button class="${clue?'secondary':'primary'}" data-action="close">조사 마치기</button>${clue?`<button class="primary" data-action="take-evidence" data-value="${clue.id}">증거로 선택 ${icon('check')}</button>`:''}</div>`);
+    showDialog(`${modalTop(clue?'단서 발견':'현장 조사')}<h2><span class="mono lime-text">${r.p}</span> ${r.name}</h2>${clue?`${evidenceArt(clue.id,true)}<p>${clue.text}</p><div class="found-clue">${icon('check')} ${clue.title} <span>수사 노트에 기록됨</span></div>`:`<p>${r.desc}</p>`}<div class="dialog-actions"><button class="${clue?'secondary':'primary'}" data-action="close">조사 마치기</button>${clue?`<button class="primary" data-action="take-evidence" data-value="${clue.id}">증거로 선택 ${icon('check')}</button>`:''}</div>`);
   }
   function inspectClue(id) {
     const clue=data().clues.find(c=>c.id===id); if(!clue)return;
     add(game().clues,id);save();render();
-    showDialog(`${modalTop('EVIDENCE RECORDED')}<h2>${clue.title}</h2><p>${clue.text}</p><div class="dialog-pills"><span class="tag">${clue.short}</span></div><div class="dialog-actions"><button class="secondary" data-action="close">닫기</button><button class="primary" data-action="take-evidence" data-value="${id}">증거로 선택 ${icon('check')}</button></div>`);
+    showDialog(`${modalTop('EVIDENCE RECORDED')}<h2>${clue.title}</h2>${evidenceArt(clue.id,true)}<p>${clue.text}</p><div class="dialog-pills"><span class="tag">${clue.short}</span></div><div class="dialog-actions"><button class="secondary" data-action="close">닫기</button><button class="primary" data-action="take-evidence" data-value="${id}">증거로 선택 ${icon('check')}</button></div>`);
   }
   function chooseEvidence(id) {
     const g=game(),s=step(); if(!evidenceItems().some(e=>e.id===id))return;
@@ -283,7 +296,7 @@
     g.offsets[p.id]=value;
     if(p.id==='song'&&value===1)flag('corrected-song');
     if(p.id==='baek'&&value===-1)flag('corrected-baek');
-    if(refresh){flash='offset';save();render();sound('scan');}
+    if(refresh){flash='offset';save();render();sound('offset');}
   }
   function fail(text) { game().feedback=text;if(!ui.panel)ui.panel=step().type==='matching'?'decoder':'evidence';save();render();sound('error');document.querySelector('.proof-feedback')?.scrollIntoView({block:'nearest'}); }
   function advance() {
@@ -295,8 +308,8 @@
     const sentences=(s.result+(finished?' '+c.ending:'')).split(/(?<=[.!?])\s+(?![”"'’])/u),pages=[];
     let sentenceCount=0;
     for(const sentence of sentences){const text=sentence.trim();if(!text)continue;if(pages.length&&sentenceCount<2&&pages[pages.length-1].length+text.length<90){pages[pages.length-1]+=' '+text;sentenceCount++;}else{pages.push(text);sentenceCount=1;}}
-    ui.resolution={title:s.resultTitle,finished,index:0,pages};
-    save();render();sound('success');resolution();
+    ui.resolution={title:s.resultTitle,finished,index:0,pages,person:s.suspect,expression:s.type==='matching'?'neutral':finished?({han:'breakdown',kang:'breakdown',oh:'defeated',jung:'guilty',baek:'breakdown'}[s.suspect]||'shaken'):s.suspect==='park'?'averted':s.suspect==='song'?'relieved':'shaken'};
+    save();render();sound(s.type==='matching'?'match':'success');resolution();
   }
   function present() {
     const g=game(),s=step();if(g.solved)return;
@@ -332,7 +345,7 @@
   function swap() {
     if(data().id!==3||game().flags.includes('swap'))return;
     if(!game().flags.includes('gcd')||!game().clues.includes('lounge')){toast('공약수 분석과 라운지 조사를 먼저 마치세요.');return;}
-    flag('swap');save();render();sound('success');toast('퇴실 블록 교환 완료 · 두 사람의 동선 복원');
+    flag('swap');save();render();sound('swap');toast('퇴실 블록 교환 완료 · 두 사람의 동선 복원');
   }
   function hint() {
     const g=game(),s=step(),level=Math.min(3,(Number(g.hints[g.step])||0)+1);g.hints[g.step]=level;save();
@@ -340,10 +353,10 @@
   }
   function notebook() {
     const c=data(),g=game(),items=evidenceItems();
-    showDialog(`${modalTop('CASE NOTEBOOK')}<h2>CASE 0${c.id} · 수사 노트</h2><p>수집한 현장 단서와 분석 결과가 기록됩니다.</p>${items.length?items.map(e=>`<div class="notebook-entry"><strong>${e.title}</strong><p>${e.text}</p></div>`).join(''):'<p>아직 수집한 증거가 없습니다.</p>'}${g.log.length?`<div class="success-line"></div><div class="eyebrow">VERIFIED DEDUCTIONS</div>${g.log.map(i=>c.steps[Number(i)]).filter(Boolean).map(s=>`<div class="notebook-entry"><strong>${s.resultTitle}</strong><p>${s.result}</p></div>`).join('')}`:''}<div class="dialog-actions"><button class="primary" data-action="close">수사로 돌아가기</button></div>`);
+    showDialog(`${modalTop('CASE NOTEBOOK')}<h2>CASE 0${c.id} · 수사 노트</h2><p>수집한 현장 단서와 분석 결과가 기록됩니다.</p>${items.length?items.map(e=>`<div class="notebook-entry">${evidenceArt(e.id)}<strong>${e.title}</strong><p>${e.text}</p></div>`).join(''):'<p>아직 수집한 증거가 없습니다.</p>'}${g.log.length?`<div class="success-line"></div><div class="eyebrow">VERIFIED DEDUCTIONS</div>${g.log.map(i=>c.steps[Number(i)]).filter(Boolean).map(s=>`<div class="notebook-entry"><strong>${s.resultTitle}</strong><p>${s.result}</p></div>`).join('')}`:''}<div class="dialog-actions"><button class="primary" data-action="close">수사로 돌아가기</button></div>`);
   }
   function settings() {
-    showDialog(`${modalTop('TERMINAL SETTINGS')}<h2>단말기 설정</h2><p>진행 상황은 현재 브라우저에 자동 저장됩니다. 개인 정보, 서버 전송, 계정 가입은 없습니다.</p><p>사운드: ${state.sound?'켜짐':'꺼짐'} · 이미지: 교체 가능한 임시 그래픽<br>브라우저 확대/축소 및 시스템의 모션 줄이기 설정을 지원합니다.</p><p style="font-size:11px">PRIME SUSPECT / 유일한 흔적<br>네 개의 사건을 담은 오프라인 수사 단말기.</p><div class="dialog-actions"><button class="secondary red-text" data-action="reset-prompt">모든 진행 초기화</button><button class="primary" data-action="close">돌아가기</button></div>`);
+    showDialog(`${modalTop('TERMINAL SETTINGS')}<h2>단말기 설정</h2><p>진행 상황은 현재 브라우저에 자동 저장됩니다. 개인 정보, 서버 전송, 계정 가입은 없습니다.</p><p>사운드: ${state.sound?'켜짐':'꺼짐'} · 이미지: 테크 느와르 아트 · 효과음/배경음악 연결됨<br>브라우저 확대/축소 및 시스템의 모션 줄이기 설정을 지원합니다.</p><p style="font-size:11px">PRIME SUSPECT / 유일한 흔적<br>네 개의 사건을 담은 오프라인 수사 단말기.</p><div class="dialog-actions"><button class="secondary red-text" data-action="reset-prompt">모든 진행 초기화</button><button class="primary" data-action="close">돌아가기</button></div>`);
   }
   function navigateCase(index) {
     if(index<0||index>unlocked())return;
@@ -352,6 +365,7 @@
   document.addEventListener('click', event=>{
     const button=event.target.closest('button[data-action]');if(!button||button.disabled)return;
     const action=button.dataset.action,value=button.dataset.value,g=game();
+    media.unlock();
     switch(action){
       case 'start':state.started=true;save();render();window.scrollTo(0,0);break;
       case 'home':state.started=false;ui.panel=null;save();render();window.scrollTo(0,0);break;
@@ -366,10 +380,10 @@
       case 'opening-next':if(g.opening<2)g.opening++;else g.openingDone=true;save();render();break;
       case 'speech-next':nextSpeech(1);break;
       case 'speech-prev':nextSpeech(-1);break;
-      case 'hold':g.claim=currentLine().id;g.feedback='';save();render();sound('scan');break;
+      case 'hold':g.claim=currentLine().id;g.feedback='';save();render();sound('hold');break;
       case 'resume':nextSpeech(1);break;
       case 'speaker':if(data().suspects.some(p=>p.id===value)){g.speaker=value;g.suspect=value;g.line=0;g.claim='';g.evidence=[];ui.panel=null;save();render();}break;
-      case 'inspect-card':if(data().suspects.some(p=>p.id===value)){g.suspect=value;if(data().id===2&&g.flags.includes('matched')){g.qPerson=value;g.qSnapshot=data().snapshots.find(s=>g.assignments[s.value]===value)?.value||150;g.qResult=null;}save();render();}break;
+      case 'inspect-card':sound('swipe');if(data().suspects.some(p=>p.id===value)){g.suspect=value;if(data().id===2&&g.flags.includes('matched')){g.qPerson=value;g.qSnapshot=data().snapshots.find(s=>g.assignments[s.value]===value)?.value||150;g.qResult=null;}save();render();}break;
       case 'deduce':if(step().options?.some(o=>o.id===value)){g.claim=value;ui.panel='evidence';save();render();}break;
       case 'start-matching':g.module='timeline';openPanel('decoder');save();break;
       case 'scan-all':data().suspects.forEach(p=>add(g.scanned,p.id));if(data().id===3)flag('both-scanned');if(data().id===1)flag('comparison');save();render();sound('scan');break;
@@ -378,7 +392,7 @@
       case 'snapshot-next':g.matchIndex=Math.min(2,g.matchIndex+1);g.feedback='';save();render();break;
       case 'snapshot-page':g.matchIndex=Math.max(0,Math.min(2,Number(value)));save();render();break;
       case 'resolution-next':if(ui.resolution){ui.resolution.index=Math.min(ui.resolution.index+1,ui.resolution.pages.length-1);resolution();}break;
-      case 'evidence-info':{const e=evidenceItems().find(e=>e.id===value);if(e)showDialog(`${modalTop('증거 상세')}<h2>${e.title}</h2><p>${e.text}</p><div class="dialog-actions"><button class="primary" data-action="close">확인</button></div>`);break;}
+      case 'evidence-info':{const e=evidenceItems().find(e=>e.id===value);if(e)showDialog(`${modalTop('증거 상세')}<h2>${e.title}</h2>${evidenceArt(e.id,true)}<p>${e.text}</p><div class="dialog-actions"><button class="primary" data-action="close">확인</button></div>`);break;}
       case 'scan':scan();break;
       case 'room':inspectRoom(value);break;
       case 'clue':inspectClue(value);break;
@@ -417,7 +431,7 @@
   document.addEventListener('dragleave',event=>{event.target.closest('[data-drop]')?.classList.remove('drag-over');});
   document.addEventListener('drop',event=>{const n=event.target.closest('[data-drop]');if(n&&dragged&&n.dataset.drop!==dragged){event.preventDefault();swap();}dragged='';});
   document.addEventListener('dragend',()=>{dragged='';document.querySelectorAll('.drag-over').forEach(n=>n.classList.remove('drag-over'));});
-  document.addEventListener('error',event=>{if(event.target.matches?.('.portrait-asset')){const p=data().suspects.find(p=>p.id===event.target.dataset.fallback);if(p)event.target.closest('.portrait-stage').outerHTML=portrait(p,true);}},true);
+  document.addEventListener('error',event=>{if(event.target.matches?.('.scene-background,.evidence-art img,.room-number img')){event.target.hidden=true;}if(event.target.matches?.('.portrait-asset')){const p=data().suspects.find(p=>p.id===event.target.dataset.fallback);if(p)event.target.closest('.portrait-stage').outerHTML=portrait(p,true);}},true);
   document.addEventListener('keydown',event=>{
     if(dialog.open)return;
     if(ui.panel){
@@ -433,6 +447,6 @@
     buttons[next].focus();buttons[next].click();
   });
   dialog.addEventListener('cancel',event=>{if(dialog.dataset.mandatory==='true')event.preventDefault();});
-  dialog.addEventListener('close',()=>{dialogCallback=null;});
+  dialog.addEventListener('close',()=>{dialogCallback=null; if(!dialog.open){ui.resolution=null;syncMedia();}});
   render();
 })();
