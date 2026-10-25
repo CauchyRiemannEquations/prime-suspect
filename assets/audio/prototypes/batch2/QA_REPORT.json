@@ -1,0 +1,106 @@
+{
+  "status": "technical_pass",
+  "wav_reproducibility": "16/16 byte-identical across two complete runs",
+  "independent_wav_decode": "16/16 passed",
+  "human_audition": "not_performed",
+  "mobile_test": "not_performed",
+  "game_integration": "not_performed",
+  "files": [
+    {
+      "file": "bgm_deep_sea_investigation.wav",
+      "frames": 1920000,
+      "channels": 2,
+      "sha256": "66285fee1348ea5b2e2986e6d80f7ecef279a32e4914626ad49f32a0df34e067"
+    },
+    {
+      "file": "bgm_interrogation_base.wav",
+      "frames": 1920000,
+      "channels": 2,
+      "sha256": "2bd24427eee238a25846405bc22c887b3eeb87e2a7679980e3f492ac30ad5882"
+    },
+    {
+      "file": "bgm_prime_pursuit.wav",
+      "frames": 1974857,
+      "channels": 2,
+      "sha256": "c23293e0ff212d8ac326c3cb9d26b6c4c627c258014c053e6bfa46b3210b1b32"
+    },
+    {
+      "file": "bgm_trick_revealed.wav",
+      "frames": 1920000,
+      "channels": 2,
+      "sha256": "16fcb07cdf5a10ff54d5e2973bbd84e20e1880acaacec261b178a951ae66751c"
+    },
+    {
+      "file": "sfx_card_swap.wav",
+      "frames": 24000,
+      "channels": 1,
+      "sha256": "b38921ed67ec8e2cadcbd79fc3c88f07f21ea7aeaaed7939b310f0e6ff3dc799"
+    },
+    {
+      "file": "sfx_damage_suspect.wav",
+      "frames": 16800,
+      "channels": 1,
+      "sha256": "62bdcd2a4a5a61eb80d35a599491a6cf8c1de2b4670c2ac5acdd546a799270af"
+    },
+    {
+      "file": "sfx_factor_computing.wav",
+      "frames": 24000,
+      "channels": 1,
+      "sha256": "13f49bca6da1f9d14a57074a7222d85a5b451edd5ff7919aee5b01ca396ac37c"
+    },
+    {
+      "file": "sfx_noise_adjust.wav",
+      "frames": 18240,
+      "channels": 1,
+      "sha256": "6189f7a0e3e9d4314ae337e35c3b1bb2aad558221c19efc724ef04d3ba26149e"
+    },
+    {
+      "file": "sfx_odd_exponent_focus.wav",
+      "frames": 12480,
+      "channels": 1,
+      "sha256": "b06bf4ff1701dc5c8dc2630965d5141108f5cd1c8ff63ea14c164e388e1e50ad"
+    },
+    {
+      "file": "sfx_penalty_wrong.wav",
+      "frames": 20160,
+      "channels": 1,
+      "sha256": "6a354016c7436e1e92cb57fcc154d1081cde94d4110eac216a603a912a316df3"
+    },
+    {
+      "file": "sfx_prime_lock.wav",
+      "frames": 20160,
+      "channels": 1,
+      "sha256": "2504d3cb37d69b51c384b09c4bde252d25cb7101dbd8a6e6d8c695fe8bcb886c"
+    },
+    {
+      "file": "sfx_snapshot_match.wav",
+      "frames": 17280,
+      "channels": 1,
+      "sha256": "8fb75ce1fe803903d374e639bfb4559df8412181080c86c0de8113acdf035a10"
+    },
+    {
+      "file": "sfx_statement_lock.wav",
+      "frames": 8160,
+      "channels": 1,
+      "sha256": "c8351096093ce5d76d2b43e2eaab610432f1d7352b2a29063d13c0c813581195"
+    },
+    {
+      "file": "sfx_text_type.wav",
+      "frames": 2160,
+      "channels": 1,
+      "sha256": "571043880a48e701d1e5fa069a91a819b4dab3650a2fe9ffcfb3df112847fdf8"
+    },
+    {
+      "file": "sfx_text_type_v2.wav",
+      "frames": 2160,
+      "channels": 1,
+      "sha256": "aa83a67121c7527f6d0d60b55ab946a386cd91b5ec9dee76f0cd4f798696ba99"
+    },
+    {
+      "file": "sfx_text_type_v3.wav",
+      "frames": 2160,
+      "channels": 1,
+      "sha256": "92fd69a19873aeb08c028db398f192113ae00e7484297500e133d3108c5015eb"
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "version": "1.0",
+  "status": "generated_candidate",
+  "assets": [
+    {
+      "file": "char_c1_choi_relieved.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1689052,
+      "sha256": "bc10b41bf160f480f7453e133ed904b64b06fe0c3179351c02410ac9d575e533"
+    },
+    {
+      "file": "char_c1_han_breakdown.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1882566,
+      "sha256": "75702f845f889dadd9cbf7e34098471b24c3175fb2318a988a13b17b887518f7"
+    },
+    {
+      "file": "char_c1_han_sneer.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1831587,
+      "sha256": "3d4a78b77f15e46c5083701a530a6e15537307221c0c4feaadc30940e95bb7a9"
+    },
+    {
+      "file": "char_c1_park_averted.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1878334,
+      "sha256": "7390456b3d3a01f612a340b41ed68308b900375c120df7fbc9649891422351a8"
+    },
+    {
+      "file": "char_c2_kang_breakdown.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1860412,
+      "sha256": "bdefe858e875ac7912375b94af74b66f2eb4e70b9e5948fa97cb1cfd681e063a"
+    },
+    {
+      "file": "char_c2_kang_calculating.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1789715,
+      "sha256": "253b3f8b1a119681ac8d661ab7cb34ccfe0113b30ae10cd005862e416279821f"
+    },
+    {
+      "file": "char_c2_kim_relieved.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 2065341,
+      "sha256": "f6a0b7e8007834995355ff8670602d5fae39bffdf933da02337b82b5b2e24418"
+    },
+    {
+      "file": "char_c2_lee_relieved.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1704361,
+      "sha256": "2e8183332ab2ad95485c2c7c1303d2b3b8e5746f9ccbb0141a2fdab063bfd3ba"
+    },
+    {
+      "file": "char_c3_jung_guilty.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1776308,
+      "sha256": "5f061b4a81cf28ac60d8c27f1067d63a5b18098ea54793a407e30d8d68a39897"
+    },
+    {
+      "file": "char_c3_oh_defeated.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1933467,
+      "sha256": "15cc9471b5be2789a30938382ec76bc8fe7f0f56b0c24f5b67de4541f9d95355"
+    },
+    {
+      "file": "char_c3_oh_sneer.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1949555,
+      "sha256": "296d2a7b5c89ece78ce9fd6ccdc8a0063228e7cbe7f6a8509fd493d4beb81e0c"
+    },
+    {
+      "file": "char_c4_baek_breakdown.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 2143583,
+      "sha256": "fa4f9e6b98e50c3f42be5f50c72e10c43dc386205bf3eb28c85ab015d3a85526"
+    },
+    {
+      "file": "char_c4_baek_sneer.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1978317,
+      "sha256": "a86f1b70d610f7bbde9865effe2e4e269c158979f2a31fc72a84561f14306a60"
+    },
+    {
+      "file": "char_c4_song_excuse.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1971958,
+      "sha256": "63499c8afc72859aca9a5748ec3107cba08dfb06ecdd64161afab5df26d7fd8a"
+    },
+    {
+      "file": "char_c4_song_relieved.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1945596,
+      "sha256": "8b00bf3d83e16abef1e6df2085405531b3e61e7e6011b9a420ad738c5ac183f0"
+    },
+    {
+      "file": "char_c4_yoon_resolute.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 1724985,
+      "sha256": "cf2b67f1fdbcaa38f2b93efa785db7638abf10bc2a5dfc242bfb5a13982cb442"
+    },
+    {
+      "file": "char_protagonist_neutral.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 2007336,
+      "sha256": "4c6248cb2374316c7f8393af8ff76a7a8bb17930fff23f313d9c20cebef21605"
+    },
+    {
+      "file": "char_protagonist_pointing.png",
+      "category": "portrait",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bytes": 2028905,
+      "sha256": "78b9ded85a8533b727cb3df3d11bb779b7fa63389330afa6c4360ae41d83d1fa"
+    }
+  ]
+}

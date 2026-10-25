@@ -1,24 +1,9 @@
-# Portrait production milestone
+# Complete asset candidate milestone
 
-Generated with OpenAI’s built-in image tool on 2026-10-24. Approved art direction: hardboiled tech-noir, textured ink/cel shading, restrained cyan rim light. Each neutral master establishes the actor; shaken variants edit the matching master.
+전 범주의 원화·벡터·오디오 시안이 준비됐다. 인물 40장(기본/당황 22장, 추가 용의자 표정 16장, 주인공 2장), 배경 5장, 증거 아이콘 11장, 지도 4종, UI/VFX SVG 40개, 효과음 13종(타자 변형 포함 WAV 15개), BGM 4종이다.
+신규 에셋의 제작 및 수치 검증과 실제 게임 통합 완료를 구분한다. 음원 청감 승인, 실제 모바일/브라우저 검수, 512px/256px 파생본 최적화, 코드 연결은 남아 있다. BGM Git 배포본은 OGG이며 대용량 WAV 원본은 별도 제공/생성기로 재현한다.
+지도는 제작용 특수 경로가 보이므로 단서 공개 조건을 연결해야 한다. 금고 13에는 망막 스캐너가 없고 인증 게이트는 3/5이다. Case 4 해치는 의무실 7에서 내부 복도 3으로 연결된다.
+게임 manifest, 스토리, 빌드 파일 변경 및 PR·병합·배포는 수행하지 않았다. 상세 검수는 CHECKLIST_KO.md와 각 묶음의 검증 문서를 참조한다.
 
-| Case | Actors / file stems | Files |
-| --- | --- | --- |
-| 1 | char_c1_park, char_c1_choi, char_c1_han | 6 |
-| 2 | char_c2_kim, char_c2_lee, char_c2_kang | 6 |
-| 3 | char_c3_oh, char_c3_jung | 4 |
-| 4 | char_c4_song, char_c4_yoon, char_c4_baek | 6 |
 
-All 22 originals are in assets/portraits, with _neutral.png and _shaken.png suffixes. Appearance choices are proposed art, not changes to canonical roles. Choi’s final clean coat removes a noncanonical evidence cue. Original files retain transparency. Git blob hashes are verified against local files.
-
-The game manifest and all gameplay/story/build files are unchanged. No merge or deployment was performed. Expressions are not yet switched in-game. 512px derivatives, mobile compositing and performance checks remain. Third/fourth expressions, protagonist, remaining backgrounds/items/UI/VFX/BGM/SFX remain unproduced. See the next checkpoint below.
-
-## Case 1 scene, maps and MVP audio checkpoint
-
-- assets/backgrounds/bg_c1_office.png: 1672×941 horizontal original, approximately 16:9 for the current scene layout. Not the initially suggested 1080×1920 full-screen asset.
-- assets/items/item_manual_book.png and item_vent_grate.png: 1254×1254 transparent originals.
-- assets/maps/: four 960×720 SVG blueprints, source data, generator and validation. Case 1 vent and Case 4 hatch are visible production references, NOT safe initial-game defaults. Implement reveal gating for #special-route after the relevant clue. Metadata alone does not hide them.
-- assets/audio/prototypes/: three original procedurally synthesized 48kHz mono PCM16 WAV effects, generator and numeric validation. No external recordings, game samples or borrowed music. Not auditioned; these are prototypes, not sound-quality approved final mixes.
-- Temporary map previews and concatenated audio preview were omitted to avoid duplicate output. Generators/README document regeneration.
-
-No manifest, gameplay, story or built HTML changes; no merge, PR or deployment.
+Additional expression prompts are reconstructed reusable guidance, not verbatim generation transcripts. All images remain high-resolution production originals.

@@ -1,0 +1,131 @@
+{
+  "notice": "These are reconstructed reusable editing guidelines, not verbatim original generation prompts.",
+  "entries": [
+    {
+      "id": "char_c1_choi_relieved",
+      "expression_ko": "안도",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c1_han_breakdown",
+      "expression_ko": "붕괴",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c1_han_sneer",
+      "expression_ko": "냉소/비웃음",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c1_park_averted",
+      "expression_ko": "시선 회피",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c2_kang_breakdown",
+      "expression_ko": "붕괴",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c2_kang_calculating",
+      "expression_ko": "계산적 미소",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c2_kim_relieved",
+      "expression_ko": "안도",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c2_lee_relieved",
+      "expression_ko": "안도",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c3_jung_guilty",
+      "expression_ko": "죄책감",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c3_oh_defeated",
+      "expression_ko": "좌절",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c3_oh_sneer",
+      "expression_ko": "냉소/비웃음",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c4_baek_breakdown",
+      "expression_ko": "붕괴",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c4_baek_sneer",
+      "expression_ko": "냉소/비웃음",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c4_song_excuse",
+      "expression_ko": "변명",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c4_song_relieved",
+      "expression_ko": "안도",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_c4_yoon_resolute",
+      "expression_ko": "단호",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_protagonist_neutral",
+      "expression_ko": "기본 실루엣",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    },
+    {
+      "id": "char_protagonist_pointing",
+      "expression_ko": "단말기 제시",
+      "prompt_status": "reconstructed_edit_guidance_not_exact_generation_transcript",
+      "guidance": "Use the same character neutral reference. Preserve identity, clothing, lighting, proportions, composition and alpha; change only the intended expression or pose. No new story clues.",
+      "source_spec": "INGAME_ASSET_SPEC_KO.md"
+    }
+  ]
+}

@@ -499,7 +499,7 @@
     {
       "id": "bg_c3_vault",
       "title": "제3연구동 보안 금고실",
-      "prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Restricted west-wing secure vault chamber, retinal security scanner and opened quantum-chip storage case, retrofuturist cold steel. No new passage contradicting the floorplan. Environment only, no UI or lettering. Portrait 9:16 composition, central quiet space for later character overlay. Keep key evidence readable in an upper banner crop.",
+      "prompt": "Original Korean hardboiled tech-noir retrofuturist detective game. Match approved Han/Park reference artwork: confident ink silhouette, textured cel shading, grounded graphic-novel anatomy, natural skin, deep navy #0B132B, slate #1C2541, restrained cyan rim light and muted brass hardware. Not photoreal, not 3D, not glossy generic cyberpunk. No lettering or watermark. Restricted west-wing secure vault chamber, plain vault door frame and opened quantum-chip storage case; no retinal scanner at vault 13 (biometric gates are corridors 3 and 5), retrofuturist cold steel. No new passage contradicting the floorplan. Environment only, no UI or lettering. Portrait 9:16 composition, central quiet space for later character overlay. Keep key evidence readable in an upper banner crop.",
       "proposed_delivery": "1080x1920 master; 1080x600 separate crop after visual review"
     },
     {

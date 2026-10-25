@@ -1,0 +1,327 @@
+{
+  "version": 1,
+  "scope": "assets-only-not-game-integrated",
+  "svg_count": 40,
+  "assets": [
+    {
+      "id": "ui_decoder_frame",
+      "file": "assets/ui_decoder_frame.svg",
+      "width": 640,
+      "height": 360,
+      "title": "팩터 디코더 얇은 프레임",
+      "state": null
+    },
+    {
+      "id": "ui_block_even",
+      "file": "assets/ui_block_even.svg",
+      "width": 240,
+      "height": 120,
+      "title": "짝수 지수 블록",
+      "state": null
+    },
+    {
+      "id": "ui_block_odd",
+      "file": "assets/ui_block_odd.svg",
+      "width": 240,
+      "height": 120,
+      "title": "홀수 지수 블록",
+      "state": null
+    },
+    {
+      "id": "ui_block_prime_state",
+      "file": "assets/ui_block_prime_state.svg",
+      "width": 240,
+      "height": 120,
+      "title": "소수 블록",
+      "state": null
+    },
+    {
+      "id": "ui_switch_swap_idle",
+      "file": "assets/ui_switch_swap_idle.svg",
+      "width": 320,
+      "height": 88,
+      "title": "퇴실 기록 블록 교환 idle",
+      "state": "idle"
+    },
+    {
+      "id": "ui_switch_swap_active",
+      "file": "assets/ui_switch_swap_active.svg",
+      "width": 320,
+      "height": 88,
+      "title": "퇴실 기록 블록 교환 active",
+      "state": "active"
+    },
+    {
+      "id": "ui_switch_swap_disabled",
+      "file": "assets/ui_switch_swap_disabled.svg",
+      "width": 320,
+      "height": 88,
+      "title": "퇴실 기록 블록 교환 disabled",
+      "state": "disabled"
+    },
+    {
+      "id": "ui_dial_noise_minus",
+      "file": "assets/ui_dial_noise_minus.svg",
+      "width": 320,
+      "height": 100,
+      "title": "오차 복구 선택 -1",
+      "state": "minus"
+    },
+    {
+      "id": "ui_dial_noise_zero",
+      "file": "assets/ui_dial_noise_zero.svg",
+      "width": 320,
+      "height": 100,
+      "title": "오차 복구 선택 0",
+      "state": "zero"
+    },
+    {
+      "id": "ui_dial_noise_plus",
+      "file": "assets/ui_dial_noise_plus.svg",
+      "width": 320,
+      "height": 100,
+      "title": "오차 복구 선택 1",
+      "state": "plus"
+    },
+    {
+      "id": "ui_btn_contradict_idle",
+      "file": "assets/ui_btn_contradict_idle.svg",
+      "width": 400,
+      "height": 104,
+      "title": "모순 제시 버튼 idle",
+      "state": "idle"
+    },
+    {
+      "id": "ui_btn_contradict_focus",
+      "file": "assets/ui_btn_contradict_focus.svg",
+      "width": 400,
+      "height": 104,
+      "title": "모순 제시 버튼 focus",
+      "state": "focus"
+    },
+    {
+      "id": "ui_btn_contradict_pressed",
+      "file": "assets/ui_btn_contradict_pressed.svg",
+      "width": 400,
+      "height": 104,
+      "title": "모순 제시 버튼 pressed",
+      "state": "pressed"
+    },
+    {
+      "id": "ui_btn_contradict_disabled",
+      "file": "assets/ui_btn_contradict_disabled.svg",
+      "width": 400,
+      "height": 104,
+      "title": "모순 제시 버튼 disabled",
+      "state": "disabled"
+    },
+    {
+      "id": "ui_map_node_prime_2_default",
+      "file": "assets/ui_map_node_prime_2_default.svg",
+      "width": 96,
+      "height": 96,
+      "title": "2번 방 default",
+      "state": "default"
+    },
+    {
+      "id": "ui_map_node_prime_2_active",
+      "file": "assets/ui_map_node_prime_2_active.svg",
+      "width": 96,
+      "height": 96,
+      "title": "2번 방 active",
+      "state": "active"
+    },
+    {
+      "id": "ui_map_node_prime_2_attention",
+      "file": "assets/ui_map_node_prime_2_attention.svg",
+      "width": 96,
+      "height": 96,
+      "title": "2번 방 attention",
+      "state": "attention"
+    },
+    {
+      "id": "ui_map_node_prime_3_default",
+      "file": "assets/ui_map_node_prime_3_default.svg",
+      "width": 96,
+      "height": 96,
+      "title": "3번 방 default",
+      "state": "default"
+    },
+    {
+      "id": "ui_map_node_prime_3_active",
+      "file": "assets/ui_map_node_prime_3_active.svg",
+      "width": 96,
+      "height": 96,
+      "title": "3번 방 active",
+      "state": "active"
+    },
+    {
+      "id": "ui_map_node_prime_3_attention",
+      "file": "assets/ui_map_node_prime_3_attention.svg",
+      "width": 96,
+      "height": 96,
+      "title": "3번 방 attention",
+      "state": "attention"
+    },
+    {
+      "id": "ui_map_node_prime_5_default",
+      "file": "assets/ui_map_node_prime_5_default.svg",
+      "width": 96,
+      "height": 96,
+      "title": "5번 방 default",
+      "state": "default"
+    },
+    {
+      "id": "ui_map_node_prime_5_active",
+      "file": "assets/ui_map_node_prime_5_active.svg",
+      "width": 96,
+      "height": 96,
+      "title": "5번 방 active",
+      "state": "active"
+    },
+    {
+      "id": "ui_map_node_prime_5_attention",
+      "file": "assets/ui_map_node_prime_5_attention.svg",
+      "width": 96,
+      "height": 96,
+      "title": "5번 방 attention",
+      "state": "attention"
+    },
+    {
+      "id": "ui_map_node_prime_7_default",
+      "file": "assets/ui_map_node_prime_7_default.svg",
+      "width": 96,
+      "height": 96,
+      "title": "7번 방 default",
+      "state": "default"
+    },
+    {
+      "id": "ui_map_node_prime_7_active",
+      "file": "assets/ui_map_node_prime_7_active.svg",
+      "width": 96,
+      "height": 96,
+      "title": "7번 방 active",
+      "state": "active"
+    },
+    {
+      "id": "ui_map_node_prime_7_attention",
+      "file": "assets/ui_map_node_prime_7_attention.svg",
+      "width": 96,
+      "height": 96,
+      "title": "7번 방 attention",
+      "state": "attention"
+    },
+    {
+      "id": "ui_map_node_prime_11_default",
+      "file": "assets/ui_map_node_prime_11_default.svg",
+      "width": 96,
+      "height": 96,
+      "title": "11번 방 default",
+      "state": "default"
+    },
+    {
+      "id": "ui_map_node_prime_11_active",
+      "file": "assets/ui_map_node_prime_11_active.svg",
+      "width": 96,
+      "height": 96,
+      "title": "11번 방 active",
+      "state": "active"
+    },
+    {
+      "id": "ui_map_node_prime_11_attention",
+      "file": "assets/ui_map_node_prime_11_attention.svg",
+      "width": 96,
+      "height": 96,
+      "title": "11번 방 attention",
+      "state": "attention"
+    },
+    {
+      "id": "ui_map_node_prime_13_default",
+      "file": "assets/ui_map_node_prime_13_default.svg",
+      "width": 96,
+      "height": 96,
+      "title": "13번 방 default",
+      "state": "default"
+    },
+    {
+      "id": "ui_map_node_prime_13_active",
+      "file": "assets/ui_map_node_prime_13_active.svg",
+      "width": 96,
+      "height": 96,
+      "title": "13번 방 active",
+      "state": "active"
+    },
+    {
+      "id": "ui_map_node_prime_13_attention",
+      "file": "assets/ui_map_node_prime_13_attention.svg",
+      "width": 96,
+      "height": 96,
+      "title": "13번 방 attention",
+      "state": "attention"
+    },
+    {
+      "id": "ui_map_node_prime_17_default",
+      "file": "assets/ui_map_node_prime_17_default.svg",
+      "width": 96,
+      "height": 96,
+      "title": "17번 방 default",
+      "state": "default"
+    },
+    {
+      "id": "ui_map_node_prime_17_active",
+      "file": "assets/ui_map_node_prime_17_active.svg",
+      "width": 96,
+      "height": 96,
+      "title": "17번 방 active",
+      "state": "active"
+    },
+    {
+      "id": "ui_map_node_prime_17_attention",
+      "file": "assets/ui_map_node_prime_17_attention.svg",
+      "width": 96,
+      "height": 96,
+      "title": "17번 방 attention",
+      "state": "attention"
+    },
+    {
+      "id": "ui_map_node_prime_19_default",
+      "file": "assets/ui_map_node_prime_19_default.svg",
+      "width": 96,
+      "height": 96,
+      "title": "19번 방 default",
+      "state": "default"
+    },
+    {
+      "id": "ui_map_node_prime_19_active",
+      "file": "assets/ui_map_node_prime_19_active.svg",
+      "width": 96,
+      "height": 96,
+      "title": "19번 방 active",
+      "state": "active"
+    },
+    {
+      "id": "ui_map_node_prime_19_attention",
+      "file": "assets/ui_map_node_prime_19_attention.svg",
+      "width": 96,
+      "height": 96,
+      "title": "19번 방 attention",
+      "state": "attention"
+    },
+    {
+      "id": "vfx_prime_slash",
+      "file": "assets/vfx_prime_slash.svg",
+      "width": 640,
+      "height": 240,
+      "title": "소인수 분리 빛줄기",
+      "state": null
+    },
+    {
+      "id": "vfx_logic_shatter",
+      "file": "assets/vfx_logic_shatter.svg",
+      "width": 640,
+      "height": 240,
+      "title": "논파 성공 진술 파편",
+      "state": null
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "bg_title",
+    "size": [
+      940,
+      1672
+    ],
+    "mode": "RGB"
+  },
+  {
+    "id": "bg_c2_biochem",
+    "size": [
+      1672,
+      941
+    ],
+    "mode": "RGB"
+  },
+  {
+    "id": "bg_c3_vault",
+    "size": [
+      1672,
+      941
+    ],
+    "mode": "RGB"
+  },
+  {
+    "id": "bg_c4_core",
+    "size": [
+      1672,
+      941
+    ],
+    "mode": "RGB"
+  }
+]

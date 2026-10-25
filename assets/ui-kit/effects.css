@@ -1,0 +1,18 @@
+/* One-shot decorative effects. Add .ps-play only on a verified game event.
+   Never use for persistent attention, never loop, honor reduce-motion. */
+.ps-vfx { pointer-events:none; overflow:visible; }
+.ps-vfx:not(.ps-play) { visibility:hidden; }
+.ps-play .ps-slash { animation:ps-slash-once 460ms ease-out both; }
+.ps-play .ps-shard { transform-box:fill-box; transform-origin:center; animation:ps-shard-once 620ms ease-out both; }
+@keyframes ps-slash-once {
+  0% {opacity:0;transform:translateX(-18px)}
+  22% {opacity:.85}
+  100% {opacity:0;transform:translateX(18px)}
+}
+@keyframes ps-shard-once {
+  0% {opacity:.65;transform:translate(0,0)}
+  100% {opacity:0;transform:translate(var(--dx,0px),var(--dy,0px))}
+}
+@media(prefers-reduced-motion:reduce) {
+  .ps-play .ps-slash,.ps-play .ps-shard {animation:none!important;transform:none!important;opacity:0!important}
+}

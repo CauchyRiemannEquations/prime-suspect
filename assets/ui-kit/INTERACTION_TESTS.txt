@@ -1,0 +1,9 @@
+PASS swap select and deselect
+PASS dial all states and repeated selection
+PASS one shot locks repeated clicks
+PASS cancel restores controls and hides effects
+PASS timeout restores controls
+PASS reduced motion prevents animation and timers
+PASS preference change cancels running effect
+PASS pagehide cleanup
+8 interaction-model tests passed; not a real browser test

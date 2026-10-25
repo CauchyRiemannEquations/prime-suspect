@@ -1,0 +1,132 @@
+{
+  "count": 9,
+  "items": [
+    {
+      "file": "item_aed_discharged.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "sha256": "a3c8cb0e80b2425614e3d06e020ab997eec5b941b713f734a34c0388c58db877",
+      "bytes": 2258636
+    },
+    {
+      "file": "item_central_lounge.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "sha256": "7937ca41610c5fb2ed055ed5888c6538c287d11a9b26c4541798d6fc6f78f4db",
+      "bytes": 2033632
+    },
+    {
+      "file": "item_escape_hatch.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "sha256": "4eaee1cea2079e360497c4871b00c8d679dff73198c2d6ae50e4defdb2104fb3",
+      "bytes": 1977470
+    },
+    {
+      "file": "item_fluorescent_drain.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "sha256": "5e20da869749b3c69655c3b03eab0889566f07e39d2008f1fc04e37dcce67db7",
+      "bytes": 1861386
+    },
+    {
+      "file": "item_keycard_1009.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "sha256": "0030fca5033294a622164f8ee847e13ae2c5850678e0f2cc36a9a0b8265154e5",
+      "bytes": 1859500
+    },
+    {
+      "file": "item_keycard_normal.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "sha256": "ce9a85707316170076f0de451a9ce2c037d092aebd97fd895ef534deb385992f",
+      "bytes": 1960428
+    },
+    {
+      "file": "item_magnetic_coil.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "sha256": "a9145004eb82e45c998175418282569bc1b169c381cd49e62696e8614704285e",
+      "bytes": 1971151
+    },
+    {
+      "file": "item_retina_scanner.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "sha256": "2e65b0ab8ddcd1fde80ba974d08ba09e5348e1ac325a61cdbfacd226bd4d11a1",
+      "bytes": 2255634
+    },
+    {
+      "file": "item_snapshot_log.png",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "sha256": "be9d83e416a2612926f6cd89d51a97db5ccde79f3215b1fb74d970de4fc58c66",
+      "bytes": 1836503
+    }
+  ],
+  "scope": "Original-resolution icon assets only, no game integration or final256px export."
+}

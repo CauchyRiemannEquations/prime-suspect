@@ -95,7 +95,7 @@
 - bg_title: 수심 1,000m 해저 연구소 전경. Deep-ocean research complex at 1000m, suspended particles and distant bubbles, analog industrial windows, restrained red emergency lights. No rainfall underwater, no invented readable lab name.
 - bg_c1_office: 제1연구동 소장실. Undersea research director office, old ceiling vent, fine disturbed dust, dim analog desk lighting, restrained non-graphic covered body silhouette on floor. Outer pressure window intact. No breached external glazing or flooded room.
 - bg_c2_biochem: 제2연구동 생화학 구역. Biochemistry security corridor during power outage, red backup lights, anonymous emergency backup terminal, closed doors to labs. No invented flooding, blood or room 11.
-- bg_c3_vault: 제3연구동 보안 금고실. Restricted west-wing secure vault chamber, retinal security scanner and opened quantum-chip storage case, retrofuturist cold steel. No new passage contradicting the floorplan.
+- bg_c3_vault: 제3연구동 보안 금고실. Restricted west-wing secure vault chamber with a plain door frame and opened quantum-chip storage case, retrofuturist cold steel. No retinal scanner at vault 13; biometric scanners belong at corridor gates 3 and 5. No new passage contradicting the floorplan.
 - bg_c4_core: 지하 코어 냉각 제어실. Core cooling control chamber, activated emergency lever without card reader, sealed main gate, ladder emergency hatch toward interior elevator hall. Red emergency lamps and analog cooling monitors, tense not destroyed. No outside escape hatch, no invented burning ruins.
 
 ## 4. 평면도: 반드시 코드/SVG로 제작
@@ -166,14 +166,11 @@
 - sfx_card_swap: 퇴실 기록 맞교환, 0.3–0.6s. Paired sliding chips crossing, then two light latches.
 - WAV 48kHz 16bit PCM, 피크 -1dBFS 이하. 루프 접합·클릭·클리핑·모바일 스피커 재생을 검수한다. 서브베이스만으로 타격감을 만들지 않는다.
 
-## 8. 현재 연결 가능 범위와 제작 순서
-1. Case 1~4 용의자 11명 기본·당황 각 2종, 총 22장 생성 완료. 최종 모바일 축소·인게임 합성 검수는 별도 단계.
-2. Case 1 소장실 배경(1672×941 가로), 매뉴얼·덕트 아이콘(각 1254×1254), 4개 챕터 SVG 도면(960×720), 카드 스캔/소인수 분해/논파 효과음 WAV 시안 3개 제작 완료. 도면의 특수 경로는 단서 공개 후 표시하도록 별도 연결해야 하며, 음원은 직접 청취 미검증이다. error 음원은 아직 제작 전이다.
-3. 인게임과 정합한 Case 2~4 캐릭터 기본·당황 원화는 완료. 각 챕터 배경·단서와 추가 표정은 제작 전.
-4. 추가 표정·챕터 배경·아이템·BGM 연결은 별도 구현/검증.
-현재 manifest는 portraits 11개 단일 초상, backgrounds.lab 1개, audio.scan/success/error 3개만 제공한다. 제작 완료와 게임 반영 완료를 구분한다.
-
-현재 제작 상태: 용의자 11명 기본·당황 초상 PNG 22개, Case 1 배경 1개와 아이템 2개, 챕터별 SVG 도면 4개, 절차적 효과음 WAV 시안 3개 완료. 제3·4 표정, 주인공, 나머지 배경·아이템·UI/VFX·BGM·SFX는 아직 제작 전이다. 도면은 특수 경로가 보이는 제작용이며 공개 게이팅 없이 시작 화면에 넣으면 안 된다. 음원은 수치 검증만 완료했고 청취 미검증이다. 게임 코드 연결·배포는 수행하지 않았다.
+## 8. 제작 상태 (2026-10-25)
+전 범주의 원화·벡터·오디오 시안이 준비됐다. 인물 40장(기본/당황 22장, 추가 용의자 표정 16장, 주인공 2장), 배경 5장, 증거 아이콘 11장, 지도 4종, UI/VFX SVG 40개, 효과음 13종(타자 변형 포함 WAV 15개), BGM 4종이다.
+신규 에셋의 제작 및 수치 검증과 실제 게임 통합 완료를 구분한다. 음원 청감 승인, 실제 모바일/브라우저 검수, 512px/256px 파생본 최적화, 코드 연결은 남아 있다. BGM Git 배포본은 OGG이며 대용량 WAV 원본은 별도 제공/생성기로 재현한다.
+지도는 제작용 특수 경로가 보이므로 단서 공개 조건을 연결해야 한다. 금고 13에는 망막 스캐너가 없고 인증 게이트는 3/5이다. Case 4 해치는 의무실 7에서 내부 복도 3으로 연결된다.
+게임 manifest, 스토리, 빌드 파일 변경 및 PR·병합·배포는 수행하지 않았다. 상세 검수는 CHECKLIST_KO.md와 각 묶음의 검증 문서를 참조한다.
 
 ## 9. 검수 체크리스트
 - 동일 캐릭터의 얼굴·헤어·의상·소품·크기·기준선 유지.
